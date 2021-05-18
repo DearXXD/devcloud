@@ -1,0 +1,313 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './github.scss';
+@import './btn.scss';
+@import './point.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+  // background-color: #f2f2f2;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 0px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+.f12 {
+  font-size: 12px;
+}
+
+.attr-row {
+  margin-bottom: 12px;;
+  display: flex;
+}
+
+.attr-key {
+  width: 68px;
+  font-weight: 500;
+  color: #7d8591;
+}
+
+.attr-value {
+  width: 100%
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #343536;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.box-shadow {
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+
+#nprogress .bar {
+  background:#13C2C2 !important; //自定义颜色
+}
+
+.input-tips {
+  color: #999;
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 4px;
+  top: 100%;
+  left: 0;
+  margin-bottom: 4px;
+}
+
+.input-full-width {
+  width: 220px;
+}
+
+.filter-search-input {
+  width:344px;
+}
+
+.more {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #DCDFE6;
+  color: #FFFFFF;
+  background-color: #13C2C2;
+  border-color: #13C2C2;
+  padding: 8px 2px;
+}
+
+.notify-info {
+  background-color: rgb(86, 249, 249);
+  .el-notification__content {
+    color: rgb(20, 105, 105);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .el-notification__title {
+    color:rgb(20, 105, 105);
+    font-size: 14px
+  }
+}
+
+.notify-warn {
+  background-color: rgb(255, 222, 170);
+  .el-notification__content {
+    color: rgb(160, 66, 0);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .el-notification__title {
+    color: rgb(160, 66, 0);
+    font-size: 14px
+  }
+}
+
+.notify-success {
+  background-color: #66ffab;
+  .el-notification__content {
+    color: #37681f;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .el-notification__title {
+    color:#37681f;
+    font-size: 14px
+  }
+}
+
+.notify-error {
+  background-color: #fd7070;
+  .el-notification__content {
+    color: #3a0505;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .el-notification__title {
+    color:#3a0505;
+    font-size: 14px
+  }
+}
