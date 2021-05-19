@@ -1,4 +1,5 @@
-import { asyncRoutes, constantRoutes } from '@/router'
+import { productRoutes, devflowRoutes, resourceRoutes, constantRoutes } from '@/router'
+import { getSubSystem, setSubSystem } from '@/utils/auth'
 
 /**
  * Use meta.role to determine if the current user has permission
@@ -36,27 +37,58 @@ export function filterAsyncRoutes(routes, roles) {
 
 const state = {
   routes: [],
-  addRoutes: []
+  addRoutes: [],
+  subSystem: getSubSystem()
 }
 
 const mutations = {
   SET_ROUTES: (state, routes) => {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
+  },
+  SET_SUB_SYSTEM: (state, sub) => {
+    state.subSystem = sub
   }
 }
 
 const actions = {
-  generateRoutes({ commit }, roles) {
+  generateRoutes({ commit }, { roles, sub }) {
+    if (!sub) {
+      sub = state.subSystem
+    }
+    let accessedRoutes
+    switch (sub) {
+      case 'develop':
+        if (roles.includes('supper')) {
+          accessedRoutes = devflowRoutes || []
+        } else {
+          accessedRoutes = filterAsyncRoutes(devflowRoutes, roles)
+        }
+        break
+      case 'resource':
+        if (roles.includes('supper')) {
+          accessedRoutes = resourceRoutes || []
+        } else {
+          accessedRoutes = filterAsyncRoutes(resourceRoutes, roles)
+        }
+        break
+      case 'eventbox':
+        break
+      default:
+        sub = 'product'
+        if (roles.includes('supper')) {
+          accessedRoutes = productRoutes || []
+        } else {
+          accessedRoutes = filterAsyncRoutes(productRoutes, roles)
+        }
+        break
+    }
+
+    setSubSystem(sub)
+
     return new Promise(resolve => {
-      let accessedRoutes
-      if (roles.includes('supper')) {
-        accessedRoutes = asyncRoutes || []
-      } else {
-        accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-      }
-      console.log(accessedRoutes)
       commit('SET_ROUTES', accessedRoutes)
+      commit('SET_SUB_SYSTEM', sub)
       resolve(accessedRoutes)
     })
   }

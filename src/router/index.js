@@ -109,10 +109,23 @@ export const constantRoutes = [
 ]
 
 /**
- * asyncRoutes
+ * productRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
-export const asyncRoutes = [
+export const productRoutes = [
+  {
+    path: '/product',
+    component: Layout,
+    redirect: '/product/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/product/index'),
+        name: 'ProductDashboard',
+        meta: { title: '总览', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
   {
     path: '/user',
     component: Layout,
@@ -223,6 +236,148 @@ export const asyncRoutes = [
         name: 'TagList',
         meta: {
           title: '标签列表'
+        }
+      }
+    ]
+  },
+
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+/**
+ * productRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const devflowRoutes = [
+  {
+    path: '/develop',
+    component: Layout,
+    redirect: '/develop/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/develop/index'),
+        name: 'DevelopDashboard',
+        meta: { title: '总览', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/sub',
+    alwaysShow: true,
+    name: 'SubAccount',
+    meta: {
+      title: '项目管理',
+      icon: 'account',
+      roles: ['supper', 'domain_admin', 'org_admin']
+    },
+    children: [
+      {
+        path: 'department',
+        component: () => import('@/views/keyauth/department'),
+        name: 'DepartmentList',
+        meta: {
+          title: '部门列表'
+        }
+      },
+      {
+        hidden: true,
+        path: 'department/:id',
+        component: () => import('@/views/keyauth/department/detail'),
+        name: 'DepartmentDetail',
+        meta: {
+          title: '部门详情'
+        }
+      },
+      {
+        path: 'sub',
+        component: () => import('@/views/keyauth/sub-account/index'),
+        name: 'SubAccountList',
+        meta: {
+          title: '用户列表'
+        }
+      },
+      {
+        hidden: true,
+        path: 'sub/:account',
+        component: () => import('@/views/keyauth/sub-account/detail'),
+        name: 'SubAccountDetail',
+        meta: {
+          title: '用户详情'
+        }
+      }
+    ]
+  },
+
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+/**
+ * productRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const resourceRoutes = [
+  {
+    path: '/resource',
+    component: Layout,
+    redirect: '/resource/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/resource/index'),
+        name: 'ResourceDashboard',
+        meta: { title: '资源检索', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/sub',
+    alwaysShow: true,
+    name: 'SubAccount',
+    meta: {
+      title: '基础资源',
+      icon: 'account',
+      roles: ['supper', 'domain_admin', 'org_admin']
+    },
+    children: [
+      {
+        path: 'department',
+        component: () => import('@/views/keyauth/department'),
+        name: 'DepartmentList',
+        meta: {
+          title: '部门列表'
+        }
+      },
+      {
+        hidden: true,
+        path: 'department/:id',
+        component: () => import('@/views/keyauth/department/detail'),
+        name: 'DepartmentDetail',
+        meta: {
+          title: '部门详情'
+        }
+      },
+      {
+        path: 'sub',
+        component: () => import('@/views/keyauth/sub-account/index'),
+        name: 'SubAccountList',
+        meta: {
+          title: '用户列表'
+        }
+      },
+      {
+        hidden: true,
+        path: 'sub/:account',
+        component: () => import('@/views/keyauth/sub-account/detail'),
+        name: 'SubAccountDetail',
+        meta: {
+          title: '用户详情'
         }
       }
     ]

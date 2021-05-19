@@ -160,7 +160,20 @@ const actions = {
     const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
     // dynamically add accessible routes
     router.addRoutes(accessRoutes)
+  },
+
+  // dynamically modify permissions
+  async changeSubSystem({ commit, dispatch }, sub) {
+    const { roles } = await dispatch('getInfo')
+
+    resetRouter()
+
+    // generate accessible routes map based on roles
+    const accessRoutes = await dispatch('permission/generateRoutes', { roles, sub }, { root: true })
+    // dynamically add accessible routes
+    router.addRoutes(accessRoutes)
   }
+
 }
 
 export default {

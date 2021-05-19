@@ -48,7 +48,6 @@ export default {
   mixins: [ResizeMixin],
   data() {
     return {
-      activeIndex: 'dashboard'
     }
   },
   computed: {
@@ -56,7 +55,8 @@ export default {
       sidebar: state => state.app.sidebar,
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
-      fixedHeader: state => state.settings.fixedHeader
+      fixedHeader: state => state.settings.fixedHeader,
+      activeIndex: state => state.permission.subSystem
     }),
     classObj() {
       return {
@@ -71,16 +71,23 @@ export default {
     handleClickOutside() {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
     },
-    handleSelect(v) {
+    async handleSelect(v) {
       switch (v) {
         case 'dashboard':
+          await this.$store.dispatch('user/changeSubSystem', 'product')
           this.$router.push({ path: '/dashboard' })
           break
         case 'product':
+          await this.$store.dispatch('user/changeSubSystem', 'product')
+          this.$router.push({ path: '/product' })
           break
         case 'develop':
+          await this.$store.dispatch('user/changeSubSystem', 'develop')
+          this.$router.push({ path: '/develop' })
           break
         case 'resource':
+          await this.$store.dispatch('user/changeSubSystem', 'resource')
+          this.$router.push({ path: '/resource' })
           break
         case 'eventbox':
           break
