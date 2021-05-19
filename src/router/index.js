@@ -335,9 +335,9 @@ export const resourceRoutes = [
     ]
   },
   {
-    path: '/user',
+    path: '/resource/base',
     component: Layout,
-    redirect: '/user/sub',
+    redirect: '/resource/base/host',
     alwaysShow: true,
     name: 'SubAccount',
     meta: {
@@ -347,37 +347,11 @@ export const resourceRoutes = [
     },
     children: [
       {
-        path: 'department',
+        path: 'host',
         component: () => import('@/views/keyauth/department'),
-        name: 'DepartmentList',
+        name: 'HostList',
         meta: {
-          title: '部门列表'
-        }
-      },
-      {
-        hidden: true,
-        path: 'department/:id',
-        component: () => import('@/views/keyauth/department/detail'),
-        name: 'DepartmentDetail',
-        meta: {
-          title: '部门详情'
-        }
-      },
-      {
-        path: 'sub',
-        component: () => import('@/views/keyauth/sub-account/index'),
-        name: 'SubAccountList',
-        meta: {
-          title: '用户列表'
-        }
-      },
-      {
-        hidden: true,
-        path: 'sub/:account',
-        component: () => import('@/views/keyauth/sub-account/detail'),
-        name: 'SubAccountDetail',
-        meta: {
-          title: '用户详情'
+          title: '主机列表'
         }
       }
     ]

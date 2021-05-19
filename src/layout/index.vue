@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="navbar1" style="display: flex;align-items: center;">
-      <div style="width:210px;">
+    <div class="navbar-top">
+      <div style="width:210px;float:left">
         <span style="margin-left:51px;color:#fff">极乐研发云</span>
       </div>
-      <div>
+      <div style="width:500px;float:left">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item index="dashboard">首页</el-menu-item>
           <el-menu-item index="product">产品运营</el-menu-item>
@@ -12,6 +12,12 @@
           <el-menu-item index="resource">资源中心</el-menu-item>
           <el-menu-item index="eventbox">事件中心</el-menu-item>
         </el-menu>
+      </div>
+
+      <div style="width:300px;float:right">
+        <div :class="{'fixed-header':fixedHeader}">
+          <top-navbar />
+        </div>
       </div>
     </div>
     <div :class="classObj" class="app-wrapper">
@@ -33,7 +39,7 @@
 
 <script>
 import RightPanel from '@/components/RightPanel'
-import { AppMain, Navbar, Settings, Sidebar } from './components'
+import { AppMain, Navbar, TopNavbar, Settings, Sidebar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 export default {
@@ -41,6 +47,7 @@ export default {
   components: {
     AppMain,
     Navbar,
+    TopNavbar,
     RightPanel,
     Settings,
     Sidebar
@@ -137,21 +144,23 @@ export default {
     width: 100%;
   }
 
-  .navbar1 {
+  .navbar-top {
+    width:100vw;
+    height:60px;
     background-color: #444681;
   }
 
-  .navbar1 ::v-deep .el-menu.el-menu--horizontal {
+  .navbar-top ::v-deep .el-menu.el-menu--horizontal {
   border-bottom: 0;
   background-color: transparent;
 }
 
- .navbar1 ::v-deep .el-menu--horizontal > .el-menu-item {
+ .navbar-top ::v-deep .el-menu--horizontal > .el-menu-item {
    color: #fff;
    background-color: transparent;
  }
 
- .navbar1 ::v-deep .el-menu--horizontal > .el-menu-item {
+ .navbar-top ::v-deep .el-menu--horizontal > .el-menu-item {
    border-bottom: 4px solid #fff;
  }
 
