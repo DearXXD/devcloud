@@ -81,7 +81,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: none;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
   .hamburger-container {
     line-height: 46px;
@@ -113,7 +113,7 @@ export default {
       padding: 0 8px;
       height: 100%;
       font-size: 18px;
-      color: #5a5e66;
+      color: #fff;
       vertical-align: text-bottom;
       &.hover-effect {
         cursor: pointer;
@@ -148,7 +148,7 @@ export default {
 
 .user-name-text {
   margin-left: 4px;
-  color: #5a5e66
+  color: #fff
 }
 
 .dropdown-color {

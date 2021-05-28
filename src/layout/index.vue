@@ -1,20 +1,19 @@
 <template>
   <div>
     <div class="navbar-top">
-      <div style="width:210px;float:left">
+      <div style="width:210px;float:left;margin-top: 22px;">
         <span style="margin-left:51px;color:#fff">极乐研发云</span>
       </div>
       <div style="width:500px;float:left">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item index="dashboard">首页</el-menu-item>
           <el-menu-item index="product">产品运营</el-menu-item>
+          <el-menu-item index="resource">资源管理</el-menu-item>
           <el-menu-item index="develop">研发交付</el-menu-item>
-          <el-menu-item index="resource">资源中心</el-menu-item>
-          <el-menu-item index="eventbox">事件中心</el-menu-item>
+          <el-menu-item index="eventbox">监控告警</el-menu-item>
         </el-menu>
       </div>
-
-      <div style="width:300px;float:right">
+      <div style="width:300px;float:right;margin-top: 6px;">
         <div :class="{'fixed-header':fixedHeader}">
           <top-navbar />
         </div>
